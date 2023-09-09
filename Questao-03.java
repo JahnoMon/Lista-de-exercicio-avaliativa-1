@@ -8,8 +8,8 @@ a) A média aritmética do CRA de todos os alunos X
 b) A média aritmética do CRA de alunos de um período específico X
 c) A mediana do CRA de todos os alunos X
 d) A moda do CRA de todos os alunos X
-e) O desvio padrão do CRA de todos os alunos
-f) A variância do CRA de todos os alunos
+e) O desvio padrão do CRA de todos os alunos X
+f) A variância do CRA de todos os alunos X
 g) O nome do aluno com o maior CRA dentre todos os alunos
 */
 
@@ -125,15 +125,19 @@ class listaAlunos {
         return desvioPadrao;
         }
 
+        public static double calcularVariancia(ArrayList<Aluno> alunos){
+            
+        }
+
     }
 }
     
-class Alunos{
+public class Alunos{
     private String nome;
     private String periodo;
     private double cra;
     
-    public Aluno(String nome, String periodo, double cra){
+    public Alunos(String nome, String periodo, double cra){
         this.nome = nome;
         this.periodo = periodo;
         this.cra = cra;
