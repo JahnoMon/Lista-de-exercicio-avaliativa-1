@@ -4,9 +4,9 @@ entradas, deve-se informar, através de uma string, o nome completo do aluno, o 
 período de entrada e o seu CRA. Entradas serão pedidas até que uma entrada vazia seja
 fornecida. Escreva métodos que calculem as seguintes estatísticas:
 
-a) A média aritmética do CRA de todos os alunos
-b) A média aritmética do CRA de alunos de um período específico
-c) A mediana do CRA de todos os alunos
+a) A média aritmética do CRA de todos os alunos X
+b) A média aritmética do CRA de alunos de um período específico X
+c) A mediana do CRA de todos os alunos 
 d) A moda do CRA de todos os alunos
 e) O desvio padrão do CRA de todos os alunos
 f) A variância do CRA de todos os alunos
@@ -15,6 +15,7 @@ g) O nome do aluno com o maior CRA dentre todos os alunos
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Collections; // c)
 
 class listaAlunos {
     public static void main(String[] args){
@@ -52,21 +53,45 @@ class listaAlunos {
     
              return somaDasNotas / quantidadeDeAlunos;
         }
-
-        public static double calcularMediaDasNotasPorPeriodo(ArrayList<Aluno> alunos, String periodo){
-            double somaDasNotas = 0.0;
-            int quantidadeDeAlunos = alunos.size();
-    
-            for(Aluno aluno : alunos){
-                if(aluno.periodo == periodo){
-                    somaDasNotas += aluno.getCra()
-                    }
+        
+        public double calcularMediaCra(ArrayList<Aluno> alunos, int periodo) {
+            double somaCra = 0.0;
+            int numAlunos = 0;
+        
+            for (Aluno aluno : alunos) {
+                if (aluno.getPeriodo() == periodo) {
+                    somaCra += aluno.getCra();
+                    numAlunos++;
+                }
             }
-    
-             return somaDasNotas / quantidadeDeAlunos;
-        }  
-}
+        
+            if (numAlunos == 0) {
+                // Evita divisão por zero se não houver alunos no período
+                return 0.0;
+            } else {
+                return somaCRA / numAlunos;
+            }
+        }
 
+        public static double encontrarMediana(ArrayList<Aluno> alunos){
+
+            Collections.sort(alunos, (a1, a2) -> Double.compare(a1.getCra(), a2.getCra()));
+
+            private int tamanho = alunos.size();
+            
+            if(tamanho % 2 == 1){
+                return alunos.get(tamanho / 2).getCra();
+            }else{
+                int meio = tamanho / 2;
+                double cra1 = alunos.get(meio -1).getCra();
+                double cra2 = alunos.get(meio).getCra();
+                return (cra1 + cra2) / 2.0;
+            }
+        }
+
+    }
+}
+    
 class Alunos{
     private String nome;
     private String periodo;
