@@ -42,15 +42,29 @@ class listaAlunos {
             alunos.add(aluno);
         }
 
-        double somaDasNotas = 0.0;
-        int quantidadeDeAlunos = alunos.size();
-
-        for(Aluno aluno : alunos){
-            somaDasNotas += aluno.getCra()
+        public static double calcularMediaDasNotas(ArrayList<Aluno> alunos){
+            double somaDasNotas = 0.0;
+            int quantidadeDeAlunos = alunos.size();
+    
+            for(Aluno aluno : alunos){
+                somaDasNotas += aluno.getCra()
+            }
+    
+             return somaDasNotas / quantidadeDeAlunos;
         }
 
-        double mediaDasNotas = somaDasNotas / quantidadeDeAlunos;
-    }  
+        public static double calcularMediaDasNotasPorPeriodo(ArrayList<Aluno> alunos, String periodo){
+            double somaDasNotas = 0.0;
+            int quantidadeDeAlunos = alunos.size();
+    
+            for(Aluno aluno : alunos){
+                if(aluno.periodo == periodo){
+                    somaDasNotas += aluno.getCra()
+                    }
+            }
+    
+             return somaDasNotas / quantidadeDeAlunos;
+        }  
 }
 
 class Alunos{
