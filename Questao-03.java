@@ -45,17 +45,6 @@ class listaAlunos {
             Aluno aluno = new Aluno(nome, periodo, cra);
             alunos.add(aluno);
         }
-
-        public static double calcularMediaDasNotas(ArrayList<Aluno> alunos){
-            double somaDasNotas = 0.0;
-            int quantidadeDeAlunos = alunos.size();
-    
-            for(Aluno aluno : alunos){
-                somaDasNotas += aluno.getCra()
-            }
-    
-             return somaDasNotas / quantidadeDeAlunos;
-        }
         
         public double calcularMediaCra(ArrayList<Aluno> alunos, int periodo) {
             double somaCra = 0.0;
@@ -119,6 +108,21 @@ class listaAlunos {
                 }
             }
             return modaCRAs;
+        }
+
+        public static double desvioPadrao(ArrayList<Aluno> alunos){
+
+            double media = calcularMediaCRA(alunos);
+
+            for (Aluno aluno : alunos) {
+            double diferenca = aluno.getCra() - media;
+            somaQuadradosDiferencas += diferenca * diferenca;
+        }
+
+        // Calcula o desvio padrão
+        double desvioPadrao = Math.sqrt(somaQuadradosDiferencas / alunos.size());
+
+        return desvioPadrao;
         }
 
     }
