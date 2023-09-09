@@ -6,16 +6,19 @@ fornecida. Escreva métodos que calculem as seguintes estatísticas:
 
 a) A média aritmética do CRA de todos os alunos X
 b) A média aritmética do CRA de alunos de um período específico X
-c) A mediana do CRA de todos os alunos 
-d) A moda do CRA de todos os alunos
+c) A mediana do CRA de todos os alunos X
+d) A moda do CRA de todos os alunos X
 e) O desvio padrão do CRA de todos os alunos
 f) A variância do CRA de todos os alunos
 g) O nome do aluno com o maior CRA dentre todos os alunos
 */
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Collections; // c)
+import java.util.Map;
+import java.util.HashMap;
 
 class listaAlunos {
     public static void main(String[] args){
@@ -87,6 +90,35 @@ class listaAlunos {
                 double cra2 = alunos.get(meio).getCra();
                 return (cra1 + cra2) / 2.0;
             }
+        }
+
+        public static double ArrayList<Double> encontrarModa(ArrayList<Aluno> alunos){
+            // mapa para contar a frequencia de CRA
+            Map<Double, Integer> frequenciaCRA = new HashMap<>();
+
+            // percorrer a lista e faz a contagem
+            for (Aluno aluno : alunos) {
+                double cra = aluno.getCra();
+            frequenciaCRA.put(cra, frequenciaCRA.getOrDefault(cra, 0) + 1);
+            }
+
+            // Encontre o(s) CRA(s) com a maior frequência
+            int maiorFrequencia = 0;
+            List<Double> modaCRAs = new ArrayList<>();
+
+            for (Map.Entry<Double, Integer> entry : frequenciaCRA.entrySet()) {
+            int frequencia = entry.getValue();
+            double cra = entry.getKey();
+
+                if (frequencia > maiorFrequencia) {
+                    maiorFrequencia = frequencia;
+                    modaCRAs.clear();
+                    modaCRAs.add(cra);
+                } else if (frequencia == maiorFrequencia) {
+                    modaCRAs.add(cra);
+                }
+            }
+            return modaCRAs;
         }
 
     }
