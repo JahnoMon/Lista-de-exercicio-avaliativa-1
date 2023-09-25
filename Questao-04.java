@@ -38,7 +38,7 @@ public class Senha {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return chaveSecreta;
     }
 
     public static void main(String[] args) {
