@@ -17,24 +17,23 @@ public class Senha {
     public static String criptografar(String senha) {
         try {
             SecretKeySpec chave = new SecretKeySpec(chaveSecreta.getBytes(), "AES");
-            Cipher cifra = Cipher.getInstance("AES"); // criando uma chave secreta a partir da chave fornecida
-            cifra.init(Cipher.ENCRYPT_MODE, chave); // cifra AES no modo de criptografia
-            byte[] textoCifrado = cifra.doFinal(senha.getBytes()); // Cifra a senha em bytes
-            return Base64.getEncoder().encodeToString(textoCifrado); // Retorna a senha criptografada em formato Base64
+            Cipher cifra = Cipher.getInstance("AES"); 
+            cifra.init(Cipher.ENCRYPT_MODE, chave); 
+            byte[] textoCifrado = cifra.doFinal(senha.getBytes()); 
+            return Base64.getEncoder().encodeToString(textoCifrado); 
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public static String descriptografar(String senhaCriptografada) { ;// recebe a senha criptografada
+    public static String descriptografar(String senhaCriptografada) { ;
         try {
-            // criando uma chave secreta usando a mesma chave usada para criptografar (simétrica):
             SecretKeySpec chave = new SecretKeySpec(chaveSecreta.getBytes(), "AES"); 
             Cipher cifra = Cipher.getInstance("AES");
-            cifra.init(Cipher.DECRYPT_MODE, chave); // Inicializa uma cifra AES no modo de descriptografia
-            byte[] textoDecifrado = cifra.doFinal(Base64.getDecoder().decode(senhaCriptografada)); // decifra a senha para Base64.
-            return new String(textoDecifrado); // retorna a senha descriptografada
+            cifra.init(Cipher.DECRYPT_MODE, chave); 
+            byte[] textoDecifrado = cifra.doFinal(Base64.getDecoder().decode(senhaCriptografada)); 
+            return new String(textoDecifrado); 
         } catch (Exception e) {
             e.printStackTrace();
         }
