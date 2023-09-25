@@ -8,10 +8,10 @@ cada peça. Utilize dos princípios de orientação a objetos para fazer isso da
 */
 
 class PecaXadrez{
-    private int x;
-    private int y;
-    private int valor;
-    private boolean capturada;
+    protected int x;
+    protected int y;
+    protected int valor;
+    protected boolean capturada;
 
     public PecaXadrez(int x, int y, int valor){
         this.x = x;
@@ -70,3 +70,4 @@ class Main{
         rei.possiveisMovimentos();
     }
 }
+
