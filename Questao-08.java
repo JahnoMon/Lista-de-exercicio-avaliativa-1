@@ -13,25 +13,25 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Data{
+public class Data {
     private int dia;
     private int mes;
     private int ano;
 
-    public Data(){
+    public Data() {
         Calendar calendario = Calendar.getInstance();
         this.dia = calendario.get(Calendar.DAY_OF_MONTH);
         this.mes = calendario.get(Calendar.MONTH) + 1;
         this.ano = calendario.get(Calendar.YEAR);
     }
 
-    public Data(int dia, int mes, int ano){
+    public Data(int dia, int mes, int ano) {
         this.dia = dia;
         this.mes = mes;
         this.ano = ano;
     }
 
-    public String diaDaSemana(){
+    public String diaDaSemana() {
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
         Calendar calendario = Calendar.getInstance();
         calendario.set(this.ano, this.mes - 1, this.dia);
@@ -39,18 +39,18 @@ public class Data{
         return sdf.format(data);
     }
 
-    public int diasDeDiferenca(Data outra){
+    public int diasDeDiferenca(Data outra) {
         Calendar calendario1 = Calendar.getInstance();
         calendario1.set(this.ano, this.mes - 1, this.dia);
 
         Calendar calendario2 = Calendar.getInstance();
-        calendario2.set(outra.ano, outra.mes - 1, outra.dia);
+        calendario2.set(outra.ano, outra.mes - 1, outra.dia); /]
 
         long diferencaMillis = calendario1.getTimeInMillis() - calendario2.getTimeInMillis();
         return (int) (diferencaMillis / (24 * 60 * 60 * 1000));
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Data dataAtual = new Data();
         System.out.println("Data Atual: " + dataAtual.diaDaSemana());
 
