@@ -11,74 +11,73 @@ coleção.
 import java.util.ArrayList;
 import java.util.List;
 
-class FiguraGeometrica{
+class FiguraGeometrica {
     private static int contador = 0;
 
-    public FiguraGeometrica(){
+    public FiguraGeometrica() {
         contador++;
     }
 
-    public double calcularArea(){
-
+    public double calcularArea() {
         return 0.0;
     }
 
-    public int getNumeroDeLados(){
+    public int getNumeroDeLados() {
         return 0;
     }
 
-    public static int getNumeroDeFigurasCriadas(){
+    public static int getNumeroDeFigurasCriadas() {
         return contador;
     }
 }
 
-class Retangulo extends FiguraGeometrica{
+class Retangulo extends FiguraGeometrica {
     private double altura;
     private double largura;
 
-    public Retangulo(double altura, double largura){
+    public Retangulo(double altura, double largura) {
         this.altura = altura;
         this.largura = largura;
     }
 
     @Override
-    public double calcularArea(){
+    public double calcularArea() {
         return altura * largura;
     }
 
     @Override
-    public int getNumeroDeLados(){
+    public int getNumeroDeLados() {
         return 4;
     }
 }
 
-class Triangulo extends FiguraGeometrica{
+class Triangulo extends FiguraGeometrica {
     private double base;
     private double altura;
 
-    public Triangulo(double base, double altura){
+    public Triangulo(double base, double altura) {
         this.base = base;
         this.altura = altura;
     }
 
     @Override
-    public double calcularArea(){
+    public double calcularArea() {
         return (base * altura) / 2;
     }
 
     @Override
-    public int getNumeroDeLados(){
+    public int getNumeroDeLados() {
         return 3;
     }
 }
 
-public class ProgramaFiguras{
-    public static void main(String[] args){
+public class ProgramaFiguras {
+    public static void main(String[] args) {
         List<FiguraGeometrica> figuras = new ArrayList<>();
         figuras.add(new Retangulo(5.0, 3.0));
         figuras.add(new Triangulo(4.0, 6.0));
 
-        for (FiguraGeometrica figura : figuras){
+        for (FiguraGeometrica figura : figuras) {
             System.out.println("Área: " + figura.calcularArea());
             System.out.println("Número de Lados: " + figura.getNumeroDeLados());
         }
@@ -86,3 +85,4 @@ public class ProgramaFiguras{
         System.out.println("Total de figuras criadas: " + FiguraGeometrica.getNumeroDeFigurasCriadas());
     }
 }
+
