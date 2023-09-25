@@ -5,11 +5,11 @@ Caso o “we” seja a primeira palavra após a vírgula, a substituição deve 
 importante: tome cuidado com o uso de “==”.
 */
 
-public class editorDeParagrafo {
+public class EditorDeParagrafo {
     public static void main(String[] args) {
-        String paragrafo = "I say. You are alone, child. There is only darkness for you, and only death for your people. These ancients are just the beginning. I will command a great and terrible army, and we will sail to a billion worlds. We will sail until every light has been extinguished. You are strong, child, but I am beyond strength. I am the end, and I have come for you, Finn.";
+        String paragrafo = "Listen to what I say. You are alone, child. There is only darkness for you, and only death for your people. These ancients are just the beginning. I will command a great and terrible army, and we will sail to a billion worlds. We will sail until every light has been extinguished. You are strong, child, but I am beyond strength. I am the end, and I have come for you, Finn.";
 
-        String[] sentenca = paragrafo.split("\\.\\s*");
+        String[] sentencas = paragrafo.split("\\.\\s*");
 
         StringBuilder resultado = new StringBuilder();
 
@@ -34,8 +34,9 @@ public class editorDeParagrafo {
                 sentencaModificada.append(palavra).append(" ");
             }
 
-            result.append(modifiedSentence.toString().trim()).append(". ");
-
+            resultado.append(sentencaModificada.toString().trim()).append(". ");
         }
+
+        System.out.println(resultado.toString());
     }
 }
