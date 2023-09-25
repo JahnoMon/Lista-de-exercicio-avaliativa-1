@@ -8,23 +8,23 @@ import java.util.ArrayList;
 import java.util.EmptyStackException;
 import java.util.List;
 
-public class Stack{
-    private Lista<String> elementos;
+public class Stack {
+    private List<String> elementos;
 
-    public Stack(){
+    public Stack() {
         elementos = new ArrayList<>();
     }
 
-    public Stack(List<String> elementosIniciais){
+    public Stack(List<String> elementosIniciais) {
         elementos = new ArrayList<>(elementosIniciais);
     }
 
-    public void push(String elemento){
+    public void push(String elemento) {
         elementos.add(elemento);
     }
 
-    public String pop(){
-        if (isEmpty()){
+    public String pop() {
+        if (isEmpty()) {
             throw new EmptyStackException();
         }
         int indiceTopo = elementos.size() - 1;
@@ -32,23 +32,41 @@ public class Stack{
         return topo;
     }
 
-    public String peek(){
-        if (isEmpty()){
+    public String peek() {
+        if (isEmpty()) {
             throw new EmptyStackException();
         }
         int indiceTopo = elementos.size() - 1;
         return elementos.get(indiceTopo);
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return elementos.isEmpty();
     }
 
-    public int size(){
+    public int size() {
         return elementos.size();
     }
 
-    public void clear(){
+    public void clear() {
         elementos.clear();
     }
+
+    public static void main(String[] args) {
+        Stack stack = new Stack();
+        stack.push("Elemento 1");
+        stack.push("Elemento 2");
+        stack.push("Elemento 3");
+
+        System.out.println("Tamanho da pilha: " + stack.size());
+
+        String top = stack.pop();
+        System.out.println("Elemento removido do topo: " + top);
+
+        System.out.println("Topo atual da pilha: " + stack.peek());
+
+        stack.clear();
+        System.out.println("A pilha está vazia? " + stack.isEmpty());
+    }
 }
+
