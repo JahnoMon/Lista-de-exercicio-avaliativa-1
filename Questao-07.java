@@ -90,7 +90,6 @@ class Rei extends PecaXadrez{
     }
 }
 
-
 class Rainha extends PecaXadrez{
     public Rainha(int x, int y){
         super(x, y, 10);
@@ -98,12 +97,12 @@ class Rainha extends PecaXadrez{
 
     @Override
     public void possiveisMovimentos(){
-        System.out.println("Possiveis movimentos para o Rei na posicao (" + x + ", " + y + "):");
+        System.out.println("Possiveis movimentos para o Rei na posiaoo (" + x + ", " + y + "):");
         System.out.println("");
-        for (int i = 0; i <= 2; i++){
-            for (int j = 0; j <= 2; j++){
-                if (i >= 0 && i <= 7 && j >= 0 && j <= 7 && (i == 0 && j <= 2) && x != 0 && y != 0) {
-                System.out.print("P ");
+        for (int i = 0; i <= 7; i++){
+            for (int j = 0; j <= 7; j++){
+                if (i >= 0 && i <= 7 && j >= 0 && j <= 7 && ((i < x - 1 && j  == y - 1) || (i > x - 1 && j  == y - 1) || (i == x - 1 && j < y - 1) || (i == x - 1 && j > y - 1) || (j == i)) && !(i == x-1 && j == y-1)) {
+                    System.out.print("P ");
                 } else {
                     System.out.print("- ");
                 }
@@ -111,7 +110,7 @@ class Rainha extends PecaXadrez{
             System.out.println();
         }
     }
- }
+}
 
  class Torre extends PecaXadrez{
     public Torre(int x, int y){
