@@ -49,11 +49,11 @@ class Rei extends PecaXadrez{
 
     @Override
     public void possiveisMovimentos(){
-        System.out.println("Possiveis movimentos para o Rei na posicao (" + x + ", " + y + "):");
-        //System.out.println("");
+        System.out.println("Possiveis movimentos para o Rei na posiaoo (" + x + ", " + y + "):");
+        System.out.println("");
         for (int i = x - 1; i <= x + 1; i++){
             for (int j = y - 1; j <= y + 1; j++){
-                if (i >= 0 && i <= 7 && j >= 0 && j <= 7 && !(i == x && j == y)) {
+                if (i >= 0 && i <= 7 && j >= 0 && j <= 7 && (i != x || j != y)) {
                     System.out.print("P ");
                 } else {
                     System.out.print("- ");
@@ -64,10 +64,127 @@ class Rei extends PecaXadrez{
     }
 }
 
+ class Peao extends PecaXadrez{
+    public Peao(int x, int y){
+        super(x, y, 10);
+    }
+
+    @Override
+    public void possiveisMovimentos(){
+        System.out.println("Possiveis movimentos para o Peao na posicao (" + x + ", " + y + "):");
+        System.out.println("");
+        int[] movimentosX = {1, 1, 1};
+        int[] movimentosY = {-1, 0, 1};
+
+        for (int i = 0; i < 3; i++){
+            int novoX = x + movimentosX[i];
+            int novoY = y + movimentosY[i];
+
+            if (novoX >= 0 && novoX <= 7 && novoY >= 0 && novoY <= 7) {
+                System.out.print("P ");
+            } else {
+                System.out.print("- ");
+            }
+        }
+        System.out.println();
+    }
+}
+
+
+class Rainha extends PecaXadrez{
+    public Rainha(int x, int y){
+        super(x, y, 10);
+    }
+
+    @Override
+    public void possiveisMovimentos(){
+        System.out.println("Possiveis movimentos para o Rei na posicao (" + x + ", " + y + "):");
+        System.out.println("");
+        for (int i = 0; i <= 2; i++){
+            for (int j = 0; j <= 2; j++){
+                if (i >= 0 && i <= 7 && j >= 0 && j <= 7 && (i == 0 && j <= 2) && x != 0 && y != 0) {
+                System.out.print("P ");
+                } else {
+                    System.out.print("- ");
+                }
+            }
+            System.out.println();
+        }
+    }
+ }
+
+ class Torre extends PecaXadrez{
+    public Torre(int x, int y){
+        super(x, y, 10);
+    }
+
+    @Override
+    public void possiveisMovimentos(){
+        System.out.println("Possiveis movimentos para o Rei na posicao (" + x + ", " + y + "):");
+        System.out.println("");
+        for (int i = 0; i <= 2; i++){
+            for (int j = 0; j <= 2; j++){
+                if (i >= 0 && i <= 7 && j >= 0 && j <= 7 && (i == 0 && j <= 2) && x != 0 && y != 0) {
+                System.out.print("P ");
+                } else {
+                    System.out.print("- ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+class Bispo extends PecaXadrez{
+    public Bispo(int x, int y){
+        super(x, y, 10);
+    }
+
+    @Override
+    public void possiveisMovimentos(){
+        System.out.println("Possiveis movimentos para o Rei na posicao (" + x + ", " + y + "):");
+        System.out.println("");
+        for (int i = 0; i <= 2; i++){
+            for (int j = 0; j <= 2; j++){
+                if (i >= 0 && i <= 7 && j >= 0 && j <= 7 && (i == 0 && j <= 2) && x != 0 && y != 0) {
+                System.out.print("P ");
+                } else {
+                    System.out.print("- ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+class Cavalo extends PecaXadrez{
+    public Cavalo(int x, int y){
+        super(x, y, 10);
+    }
+
+    @Override
+    public void possiveisMovimentos(){
+        System.out.println("Possiveis movimentos para o Rei na posicao (" + x + ", " + y + "):");
+        System.out.println("");
+        for (int i = 0; i <= 2; i++){
+            for (int j = 0; j <= 2; j++){
+                if (i >= 0 && i <= 7 && j >= 0 && j <= 7 && (i == 0 && j <= 2) && x != 0 && y != 0) {
+                System.out.print("P ");
+                } else {
+                    System.out.print("- ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+
 class Main{
     public static void main(String[] args){
-        Rei rei = new Rei(3, 3);
+        Peao rei = new Peao(3, 3);
         rei.possiveisMovimentos();
     }
 }
+
 
