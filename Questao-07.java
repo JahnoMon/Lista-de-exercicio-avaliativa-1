@@ -7,6 +7,36 @@ são os possíveis movimentos dela. Esse método deve funcionar de forma diferen
 cada peça. Utilize dos princípios de orientação a objetos para fazer isso da melhor maneira.
 */
 
+package Questoes;
+
+public class Questao_7 {
+	public static void main(String[] args){
+        Rei rei = new Rei(3, 3);
+        rei.possiveisMovimentos();
+        System.out.print("");
+        
+        Peao peao = new Peao(8, 8);
+        peao.possiveisMovimentos();
+        System.out.print("");
+        
+        Rainha rainha = new Rainha(3, 3);
+        rainha.possiveisMovimentos();
+        System.out.print("");
+
+        Torre torre = new Torre(3, 3);
+        torre.possiveisMovimentos();
+        System.out.print("");
+
+        Bispo bispo = new Bispo(3, 3);
+        bispo.possiveisMovimentos();
+        System.out.print("");
+
+        Cavalo cavalo = new Cavalo(3, 3);
+        cavalo.possiveisMovimentos();
+        System.out.print("");
+}
+}
+
 class PecaXadrez{
     protected int x;
     protected int y;
@@ -51,9 +81,9 @@ class Rei extends PecaXadrez{
     public void possiveisMovimentos(){
         System.out.println("Possiveis movimentos para o Rei na posiaoo (" + x + ", " + y + "):");
         System.out.println("");
-        for (int i = x - 1; i <= x + 1; i++){
-            for (int j = y - 1; j <= y + 1; j++){
-                if (i >= 0 && i <= 7 && j >= 0 && j <= 7 && (i != x || j != y)) {
+        for (int i = 0; i <= 7; i++){
+            for (int j = 0; j <= 7; j++){
+                if (i >= 0 && i <= 7 && j >= 0 && j <= 7 && (i != x || j != y) && (i == x - 1 && j == y - 1) || ((i == x - 1 && j == y - 1)) ) {
                     System.out.print("P ");
                 } else {
                     System.out.print("- ");
@@ -71,22 +101,18 @@ class Rei extends PecaXadrez{
 
     @Override
     public void possiveisMovimentos(){
-        System.out.println("Possiveis movimentos para o Peao na posicao (" + x + ", " + y + "):");
+        System.out.println("Possiveis movimentos para o Peao na posiaoo (" + x + ", " + y + "):");
         System.out.println("");
-        int[] movimentosX = {1, 1, 1};
-        int[] movimentosY = {-1, 0, 1};
-
-        for (int i = 0; i < 3; i++){
-            int novoX = x + movimentosX[i];
-            int novoY = y + movimentosY[i];
-
-            if (novoX >= 0 && novoX <= 7 && novoY >= 0 && novoY <= 7) {
-                System.out.print("P ");
-            } else {
-                System.out.print("- ");
+        for (int i = 0; i <= 7; i++){
+            for (int j = 0; j <= 7; j++){
+                if (i >= 0 && i <= 7 && j >= 0 && j <= 7 && (i == x - 2 && j == y - 1)) {
+                    System.out.print("P ");
+                } else {
+                    System.out.print("- ");
+                }
             }
+            System.out.println();
         }
-        System.out.println();
     }
 }
 
@@ -123,19 +149,25 @@ class Rainha extends PecaXadrez {
     }
 
     @Override
-    public void possiveisMovimentos(){
-        System.out.println("Possiveis movimentos para o Rei na posicao (" + x + ", " + y + "):");
+    public void possiveisMovimentos() {
+        System.out.println("Possiveis movimentos para a Torre na posicao (" + x + ", " + y + "):");
         System.out.println("");
-        for (int i = 0; i <= 2; i++){
-            for (int j = 0; j <= 2; j++){
-                if (i >= 0 && i <= 7 && j >= 0 && j <= 7 && (i == 0 && j <= 2) && x != 0 && y != 0) {
-                System.out.print("P ");
+        for (int i = 0; i <= 7; i++) {
+            for (int j = 0; j <= 7; j++) {
+                if (i != x || j != y) {
+                    // so assim p diagonal inversa:
+                    if (i == x || j == y) { 
+                        System.out.print("P ");
+                    } else {
+                        System.out.print("- ");
+                    }
                 } else {
                     System.out.print("- ");
                 }
             }
             System.out.println();
         }
+        System.out.printf("%n%n");
     }
 }
 
@@ -145,13 +177,18 @@ class Bispo extends PecaXadrez{
     }
 
     @Override
-    public void possiveisMovimentos(){
-        System.out.println("Possiveis movimentos para o Rei na posicao (" + x + ", " + y + "):");
+    public void possiveisMovimentos() {
+        System.out.println("Possiveis movimentos para a Rainha na posicao (" + x + ", " + y + "):");
         System.out.println("");
-        for (int i = 0; i <= 2; i++){
-            for (int j = 0; j <= 2; j++){
-                if (i >= 0 && i <= 7 && j >= 0 && j <= 7 && (i == 0 && j <= 2) && x != 0 && y != 0) {
-                System.out.print("P ");
+        for (int i = 0; i <= 7; i++) {
+            for (int j = 0; j <= 7; j++) {
+                if (i != x || j != y) {
+                    // so assim p diagonal inversa:
+                    if ( Math.abs(i - x) == Math.abs(j - y)) { 
+                        System.out.print("P ");
+                    } else {
+                        System.out.print("- ");
+                    }
                 } else {
                     System.out.print("- ");
                 }
@@ -168,7 +205,7 @@ class Cavalo extends PecaXadrez{
 
     @Override
     public void possiveisMovimentos(){
-        System.out.println("Possiveis movimentos para o Rei na posicao (" + x + ", " + y + "):");
+        System.out.println("Possiveis movimentos para o Cavalo na posicao (" + x + ", " + y + "):");
         System.out.println("");
         for (int i = 0; i <= 2; i++){
             for (int j = 0; j <= 2; j++){
@@ -182,34 +219,3 @@ class Cavalo extends PecaXadrez{
         }
     }
 }
-
-
-class Main{
-    public static void main(String[] args){
-        Rei rei = new Rei(3, 3);
-        rei.possiveisMovimentos();
-        System.out.print("");
-        
-        Peao peao = new Peao(3, 3);
-        peao.possiveisMovimentos();
-        System.out.print("");
-        
-        Rainha rainha = new Rainha(3, 3);
-        rainha.possiveisMovimentos();
-        System.out.print("");
-
-        Torre torre = new Torre(3, 3);
-        torre.possiveisMovimentos();
-        System.out.print("");
-
-        Bispo bispo = new Bispo(3, 3);
-        bispo.possiveisMovimentos();
-        System.out.print("");
-
-        Cavalo cavalo = new Cavalo(3, 3);
-        cavalo.possiveisMovimentos();
-        System.out.print("");
-    }
-}
-
-
